@@ -1,0 +1,248 @@
+:root {
+    --primary: #ffffff;      /* Tactical White */
+    --accent: #007aff;       /* Command Blue */
+    --bg: #050505;           /* Deep Space Black */
+    --card-bg: #0f0f0f;
+    --text: #a0a0a0;
+    --terminal-green: #00ff41;
+}
+
+body {
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Update your canvas styling */
+#tars-bg {
+    position: absolute; /* Changed from fixed to absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;      /* Keep it full height of the first view */
+    z-index: -1;        /* Still behind the letters */
+    pointer-events: none;
+    display: block;
+}
+
+/* IMPORTANT: Your hero/header container needs this to "hold" the robot */
+.hero {
+    position: relative; 
+    height: 100vh;
+    overflow: hidden;   /* Prevents the robot from peaking into other sections */
+    background: transparent;
+}
+
+
+
+
+/* --- Animations --- */
+
+/* Initial state for Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* Active state triggered by JS */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scanline effect */
+.scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 100;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+    opacity: 0.1;
+    position: fixed;
+    pointer-events: none;
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: -100px; }
+    100% { top: 100%; }
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --- Navigation --- */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 2px;
+}
+
+.logo span { font-size: 0.7rem; opacity: 0.5; margin-left: 5px; }
+
+ul { list-style: none; display: flex; gap: 2.5rem; margin: 0; }
+a { color: var(--text); text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+a:hover { color: var(--primary); text-shadow: 0 0 8px #fff; }
+
+/* --- Hero Section --- */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    padding: 120px 10% 80px 10%;
+}
+
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    min-height: 1.2em; /* Prevents layout jump during typing */
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    font-size: 1.1rem;
+}
+
+/* --- Buttons --- */
+
+.btn {
+    padding: 1rem 2.5rem;
+    border-radius: 2px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: black;
+    border: 1px solid var(--primary);
+}
+
+.primary-btn:hover {
+    background: transparent;
+    color: var(--primary);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid #333;
+}
+
+.secondary-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* --- Features Grid --- */
+
+.features { padding: 60px 10%; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid #1a1a1a;
+    padding: 2.5rem;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--accent);
+    background: #111;
+}
+
+.card h3 { color: var(--primary); margin-top: 0; }
+
+/* --- Terminal Section --- */
+
+.terminal-section { padding: 80px 10%; background: #080808; }
+.terminal-section h2 { text-align: center; margin-bottom: 3rem; color: var(--primary); }
+
+.terminal {
+    background: #000;
+    border: 1px solid #222;
+    border-radius: 6px;
+    max-width: 850px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #222;
+}
+
+.title { font-size: 0.75rem; color: #666; margin-left: 10px; }
+
+.terminal-body {
+    padding: 25px;
+    color: var(--terminal-green); /* Keep green for terminal feel */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    background: #000;
+}
+
+.cmd { color: #555; margin-bottom: 8px; }
+.out { margin-bottom: 20px; color: #bbb; }
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: var(--terminal-green);
+    vertical-align: middle;
+    animation: blink 1s infinite;
+}
+
+/* --- Footer --- */
+
+footer {
+    text-align: center;
+    padding: 60px 5%;
+    border-top: 1px solid #1a1a1a;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    opacity: 0.6;
+}

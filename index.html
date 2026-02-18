@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARS | AI ASSISTANT</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">TARS AI</div>
+            <ul>
+                <li><a href="#features">Specs</a></li>
+                <li><a href="#install">Deployment</a></li>
+                <li><a href="https://github.com/OneWay-Studios/TARSAI-OneWayStudios" target="_blank">Source Code</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <!-- 3D Background Canvas inside hero -->
+        <canvas id="tars-bg"></canvas>
+
+        <!-- Scanline Overlay -->
+        <div class="scanline"></div>
+
+        
+
+        <div class="container">
+            <h1 class="glitch" data-text="TACTICAL ADAPTIVE ROBOTIC SYSTEM"></h1>
+            <p>USMC Block II Upgrade. Low-latency voice interaction, environment sensing, and tactical humor subroutines.</p>
+            <div class="cta-group">
+                <a href="https://github.com/OneWay-Studios/TARSAI-OneWayStudios/archive/refs/heads/main.zip" class="btn primary-btn">
+                    DOWNLOAD SYSTEM
+                </a>
+                <a href="#install" class="btn secondary-btn">
+                    DEPLOYMENT LOGS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="grid">
+            <div class="card">
+                <h3>Voice Engine</h3>
+                <p>Powered by Kokoro-ONNX for high-fidelity, military-grade deadpan delivery by thewh1teagle/kokoro-onnx Repo.</p>
+            </div>
+            <div class="card">
+                <h3>Intelligence</h3>
+                <p>Llama 3.1-8B integration via Groq for rapid tactical decision making.</p>
+            </div>
+            <div class="card">
+                <h3>Vision HUD</h3>
+                <p>Real-time environment brightness sensing and object recognition capability.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="install" class="terminal-section">
+        <div class="container">
+            <h2>DEPLOYMENT PROTOCOL</h2>
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="title">terminal — tars_install.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="cmd"># 1. Clone the system repository or just download it through the website.</p>
+                    <p class="out">git clone https://github.com/OneWay-Studios/TARSAI-OneWayStudios.git</p>
+
+                    <p class="cmd"># 2. Install dependencies</p>
+                    <p class="out">pip install -r requirements.txt</p>
+
+                    <p class="cmd"># 3. Create .env and add GROQ API KEY</p>
+                    <p class="out">echo "GROQ_API_KEY= PASTE-YOUR-GROQ-API-KEY-HERE" > .env</p>
+
+                    <p class="cmd"># 4. Run TARS</p>
+                    <p class="out">python tars.py</p>
+
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>COOPER, SEE YOU AT THE RENDEZVOUS. &copy; 2026 ONEWAY STUDIOS.</p>
+    </footer>
+
+    <!-- Load Three.js FIRST -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+    <!-- Then your 3D TARS scene -->
+    <script src="tars-3d.js"></script>
+
+    <!-- Then your UI logic -->
+    <script src="script.js"></script>
+
+</body>
+</html>
